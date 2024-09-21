@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divisiones de Página</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <div class="container">
+        <!-- Sección grande superior -->
+        <div class="top-section">
+            <h1>BIMART</h1>
+
+
+        </div>
+
+        <!-- Secciones inferiores -->
+
+        <!-- Sección izquierda con carrusel -->
+        <div class="left-section">
+
+            <!-- Contenedores de texto para cada imagen -->
+            <div class="carousel-text active">Supervisión móvil.</div>
+            <div class="carousel-text">Proyectos en tiempo real.</div>
+            <div class="carousel-text">Eficiencia, calidad y ahorro.</div>
+            <div class="carousel-text">Precisión en construcción.</div>
+
+
+            <div class="carousel">
+                <img src="../img/bimart2.png" alt="Imagen 1" class="carousel-image">                
+                <img src="../img/bimart3.png" alt="Imagen 2" class="carousel-image">
+                <img src="../img/bimart4.png" alt="Imagen 3" class="carousel-image">
+                <img src="../img/bimart5.png" alt="Imagen 3" class="carousel-image">
+
+            </div>
+
+            <!-- Puntos de navegación para el carrusel -->
+            <div class="carousel-dots">
+                <span class="dot" onclick="currentImage(0)"></span>
+                <span class="dot" onclick="currentImage(1)"></span>
+                <span class="dot" onclick="currentImage(2)"></span>
+                <span class="dot" onclick="currentImage(3)"></span>
+            </div>
+
+        </div>
+
+        <div class="middle-top-section">
+            <!-- Iframe para incrustar el video de YouTube -->
+            <iframe 
+                width="100%" 
+                height="100%" 
+                src="https://www.youtube.com/embed/hZGgrwpNq4o?autoplay=1&mute=1&loop=1&playlist=hZGgrwpNq4o"  
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="middle-bottom-section">
+            
+            <h2>Características Clave</h2>
+            <ul>
+                <li>Visualización avanzada de planos en tiempo real con AR.</li>
+                <li>Detección temprana de errores y optimización de recursos.</li>
+                <li>Seguimiento de progreso y gestión de coordinación.</li>
+                <li>Integración con múltiples dispositivos y herramientas de CAD.</li>
+            </ul>
+
+        </div>
+
+        <div class="right-section">
+            
+            <h1>¡No te pierdas nuestro lanzamiento!</h1>
+            <p>Déjanos tu correo y sé el primero en enterarte cuando BIMART esté disponible.</p>
+            
+            <!-- Formulario para ingresar el correo -->
+            <form id="emailForm">
+                <input type="email" id="emailInput" placeholder="Tu correo electrónico" required>
+                <button type="submit" class="submit-button">Quiero estar informado</button>
+            </form>
+    
+            
+            <!-- Mensaje de validación -->
+            <p id="message" style="color: green;"></p>
+
+
+            
+
+            <!-- Íconos de redes sociales -->
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/" target="_blank" class="icon linkedin">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" class="icon instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/" target="_blank" class="icon facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

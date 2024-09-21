@@ -1,0 +1,476 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;  
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 2fr 1fr 1fr;
+  grid-template-columns: 25% 30% 45%; /* Ajustes de ancho: 25% izquierda, 30% centro, 45% derecha */  
+  height: calc(100vh - 0px); /* Altura ajustada para tener en cuenta el padding del body */  
+}
+
+
+
+
+/* Sección grande superior */
+.top-section {
+  grid-column: 1 / 4; /* Ocupará las 3 columnas completas */
+  background-image: url(../img/bimart1.png); /* Cambia la ruta de la imagen */
+  background-size: 100% 100%; /* La imagen se ajusta completamente al tamaño de la sección */
+  background-position: center; /* Centra la imagen en la sección */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #f4f4f4;
+  height: 100%; /* Asegura que ocupe toda la altura disponible */
+  position: relative;
+  overflow: hidden; /* Asegura que nada se salga de la sección */
+}
+
+/* Estilo para el texto de la sección superior */
+.top-section h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; /* Aplica la negrita */
+  letter-spacing: 0.2em; /* Espacia las letras más */
+  position: absolute; /* Permite posicionar el texto en un lugar específico dentro del contenedor */
+  top: 0; /* Alinea el texto en la parte superior */
+  left: 2%; /* Alinea el texto a la izquierda */
+  margin: 20px; /* Añade un margen para separar un poco el texto del borde */
+  color: white; /* Color del texto */
+  font-size: 4rem; /* Tamaño grande del texto */
+  font-weight: bold; /* Texto en negrita */
+  overflow: hidden; /* Asegura que el texto no se desborde */
+}
+
+/* Media queries para ajustar el tamaño en pantallas más pequeñas */
+@media (max-width: 768px) {
+  .top-section h1 {
+    font-size: 8vw; /* Ajuste del tamaño para pantallas medianas */
+  }
+}
+
+@media (max-width: 480px) {
+  .top-section h1 {
+    font-size: 10vw; /* Ajuste adicional para pantallas móviles */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Sección inferior izquierda */
+.left-section {
+  grid-column: 1 / 2;
+  grid-row: 2 / 4; /* Ocupará dos filas */
+  background-color: black; /* Fondo negro */ 
+  background-size: 100% 100%; /* La imagen se ajusta completamente al tamaño de la sección */
+  background-position: center; 
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column; /* Para colocar el carrusel y los puntos verticalmente */
+  padding: 20px;
+  border: 1px solid #f4f4f4;
+  position: relative;
+  overflow: hidden; /* Asegura que el contenido no se desborde */
+}
+
+/* Carrusel */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 80%; /* Ajusta la altura para dejar espacio a los puntos */  
+}
+
+.carousel-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;  
+  opacity: 0; /* Las imágenes están ocultas por defecto */
+  transition: opacity 0.5s ease-in-out;
+  object-fit: fill; /* Recorta la imagen para mantener la proporción */
+  display: block; /* Hace que las imágenes se comporten como un bloque */
+  max-width: 100%;
+}
+
+.carousel-image.active {
+  opacity: 1; /* Solo la imagen activa será visible */
+}
+
+/* Texto para cada imagen */
+.carousel-text {
+  font-size: 1.5vw; /* Ajuste de tamaño de texto basado en el ancho del viewport (responsive) */
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10px;
+  display: none; /* Oculta el texto por defecto */
+  text-align: center;
+  transition: font-size 0.3s ease; /* Suaviza los cambios de tamaño */
+
+  word-wrap: break-word; /* Permite que las palabras largas se dividan en varias líneas */
+  max-width: 90%; /* Asegura que el texto no supere el 90% del ancho de su contenedor */
+}
+
+.carousel-text.active {
+  display: block; /* Solo muestra el texto activo */
+}
+
+/* Media para ajustar el tamaño del texto en pantallas más pequeñas */
+@media (max-width: 768px) {
+  .carousel-text {
+    font-size: 3vw; /* Aumenta el tamaño del texto en pantallas más pequeñas */
+    max-width: 90%; /* Asegura que no supere el ancho del contenedor */
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-text {
+    font-size: 2vw; /* Ajusta el tamaño en pantallas aún más pequeñas */
+  }
+}
+
+@media (min-width: 1200px) {
+  .carousel-text {
+    font-size: 1.5vw; /* Reduce el tamaño en pantallas muy grandes */
+  }
+}
+
+/* Puntos de navegación */
+.carousel-dots {
+  display: flex;
+  justify-content: center; /* Centra los puntos horizontalmente */
+  position: absolute;
+  top: 10px; /* Coloca los puntos en la parte superior, ajusta este valor según sea necesario */
+  left: 50%;
+  transform: translateX(-50%); /* Asegura que los puntos estén centrados */
+  z-index: 10; /* Asegura que los puntos estén encima de las imágenes */
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 5px;
+  background-color: white; /* Color de los puntos: blanco */
+  border-radius: 50%; /* Hace que los puntos sean redondos */
+  display: inline-block;
+  cursor: pointer;
+  opacity: 0.7; /* Un poco de transparencia para los puntos */
+  transition: opacity 0.3s ease; /* Transición suave cuando cambian */
+}
+
+.dot.active {
+  opacity: 1; /* Aumenta la opacidad del punto activo */
+}
+
+
+
+
+
+
+
+
+/* Sección inferior central superior */
+.middle-top-section {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  background-color: #b4b4b4; /* Puedes cambiar este color si no deseas un fondo gris */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0; /* Asegura que no haya espacio adicional alrededor del video */
+  height: 100%; /* Asegura que ocupe todo el espacio disponible */
+}
+
+.video-section iframe {
+  width: 100%; /* Asegura que el video ocupe todo el ancho disponible */
+  height: auto; /* Ajusta la altura automáticamente para mantener la proporción */
+}
+
+
+
+
+
+
+
+/* Sección inferior central inferior */
+.middle-bottom-section {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  background-color: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: black;
+  height: 25vh; /* Altura basada en el 30% del viewport */
+  min-height: 80px; /* Altura mínima */
+  max-height: 25vh; /* Altura máxima para pantallas más grandes */
+  overflow-y: auto; /* Habilita scroll si hay más contenido del que cabe en la sección */
+  box-sizing: border-box;
+}
+
+.middle-bottom-section h2 {
+  font-size: 1.5rem; /* Tamaño del título */
+  margin-bottom: 10px;
+  text-align: center; /* Centra el texto dentro de su contenedor */
+  width: 100%; /* Asegura que el h2 ocupe todo el ancho para que el centrado funcione */  
+}
+
+.middle-bottom-section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0; /* Elimina márgenes adicionales */
+}
+
+.middle-bottom-section li {
+  font-size: 0.9rem; /* Ajusta el tamaño del texto */
+  margin-bottom: 5px; /* Ajusta el espaciado entre los elementos */
+  line-height: 1.2; /* Reduce el espaciado entre líneas */
+  list-style-type: square; /* Uses square bullets for a simple look */
+  color: #333;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Sección derecha */
+.right-section {
+  grid-column: 3 / 4;
+  grid-row: 2 / 4;
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #ddd;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden; /* Evita cualquier desbordamiento */
+  position: relative; /* Para permitir que el mensaje aparezca sin desplazar otros elementos */
+}
+
+.right-section h1 {
+  font-size: 2rem; /* Tamaño base para pantallas grandes */
+  max-width: 100%; /* Limita el ancho del título */
+  word-wrap: break-word; /* Divide las palabras largas */
+  margin-bottom: 20px;
+  color: #000;
+  line-height: 1.2; /* Mejora la legibilidad */
+}
+
+.right-section p {
+  font-size: 1.2rem; /* Tamaño de texto base */
+  margin-bottom: 20px;
+  color: #333;
+  width: 100%;
+  max-width: 100%;
+  word-wrap: break-word;
+  line-height: 1.4;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#emailInput {
+  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.submit-button {
+  background-color: black; /* Fondo negro */
+  color: white; /* Texto blanco para contraste */
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 80%;
+  max-width: 400px;
+  box-sizing: border-box;
+  position: relative;
+  transition: all 0.2s ease-in-out; /* Transición suave */
+  box-shadow: 0 0.5em 0.5em -0.4em rgba(0, 0, 0, 0.7); /* Sombra inicial con transparencia */
+  -webkit-transform: translateY(0); /* Posición inicial */
+  transform: translateY(0); /* Posición inicial */
+}
+
+.submit-button:hover {
+  background-color: #333; /* Un negro más claro en hover */
+  box-shadow: 0 0.75em 0.75em -0.4em rgba(0, 0, 0, 0.9); /* Sombra más pronunciada */
+  -webkit-transform: translateY(-0.25em); /* Eleva ligeramente el botón */
+  transform: translateY(-0.25em); /* Eleva ligeramente el botón */
+}
+
+#message {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: green;
+  height: 20px; /* Altura fija para el mensaje */
+  visibility: hidden; /* El espacio está reservado, pero el mensaje está oculto */
+}
+
+
+
+/* Estilo para los íconos de redes sociales */
+.social-icons {
+  position: absolute;
+  bottom: 20px; /* Posiciona los íconos en el margen inferior */
+  right: 20px; /* Los coloca en el margen derecho */
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  color: #333;
+  font-size: 1.8rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #000;
+}
+
+.icon.linkedin:hover {
+  color: #0e76a8; /* Color oficial de LinkedIn */
+}
+
+.icon.instagram:hover {
+  color: #e1306c; /* Color oficial de Instagram */
+}
+
+.icon.facebook:hover {
+  color: #3b5998; /* Color oficial de Facebook */
+}
+
+
+/* Ajustes responsivos para tamaños de pantalla pequeños */
+@media (max-width: 768px) {
+  .social-icons a {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-icons a {
+    font-size: 1.4rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Media queries para pantallas más pequeñas */
+@media (max-width: 1300px) {
+  .right-section h1 {
+    font-size: 1.5rem; /* Ajusta el tamaño del título en pantallas medianas */
+  }
+
+  .right-section p {
+    font-size: 1.1rem; /* Ajusta el texto en pantallas medianas */
+  }
+
+  #emailInput, .submit-button {
+    width: 90%; /* Aumenta el ancho de los campos */
+    font-size: 1.1rem; /* Ajusta el texto en pantallas medianas */
+  }
+}
+
+@media (max-width: 900px) {
+  .right-section h1 {
+    font-size: 1.25rem; /* Tamaño más pequeño pero visible */
+  }
+
+  .right-section p {
+    font-size: 0.8rem; /* Tamaño del texto más pequeño pero legible */
+  }
+
+  #emailInput, .submit-button {
+    width: 95%; /* Cubre más espacio en pantallas pequeñas */
+    font-size: 0.8rem; /* Tamaño del texto más pequeño pero legible */
+  }
+}
+
+
+@media (max-width: 600px) {
+  .right-section h1 {
+    font-size: 1.0rem; /* Tamaño más pequeño pero visible */
+  }
+
+  .right-section p {
+    font-size: 0.65rem; /* Tamaño del texto más pequeño pero legible */
+  }
+
+  #emailInput, .submit-button {
+    width: 95%; /* Cubre más espacio en pantallas pequeñas */
+    font-size: 0.65rem; /* Tamaño del texto más pequeño pero legible */
+  }
+}
+
+
+
+
+
+

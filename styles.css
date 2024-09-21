@@ -21,7 +21,7 @@ body {
 /* Sección grande superior */
 .top-section {
   grid-column: 1 / 4; /* Ocupará las 3 columnas completas */
-  background-image: url(../img/bimart1.png); /* Cambia la ruta de la imagen */
+  background-image: url('https://github.com/RaulFrancoGL/Landing-Page/blob/main/images/bimart1.png?raw=true'); /* Cambia la ruta de la imagen */
   background-size: 100% 100%; /* La imagen se ajusta completamente al tamaño de la sección */
   background-position: center; /* Centra la imagen en la sección */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
